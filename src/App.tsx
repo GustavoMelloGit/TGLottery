@@ -1,5 +1,5 @@
 import React from "react";
-import GlobalStyle from "./globalStyles";
+import GlobalStyle from "./styles/globalStyles";
 import Authentication from "./pages/Authentication";
 
 function App() {
