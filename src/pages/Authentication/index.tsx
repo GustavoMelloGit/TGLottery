@@ -1,16 +1,20 @@
-import React from "react";
-import ArrowedButton from "../../components/ui/ArrowedButton";
-import {
-  Aside,
-  AuthenticationWrapper,
-  Container,
-  ForgotPassword,
-  FormWrapper,
-  Input,
-  SpanWrapper,
-} from "./styles";
+import React, { useState } from "react";
+import { Aside, Container, SpanWrapper } from "./styles";
+import LogIn from "../../components/Form/LogIn";
+import ResetPassword from "../../components/Form/ResetPassword";
 
 export default function Authentication() {
+  const [userForm, setUserForm] = useState(0);
+
+  function showUserForm(index: number) {
+    switch (index) {
+      case 0:
+        return <LogIn setForm={setUserForm} />;
+      case 1:
+        return <ResetPassword setForm={setUserForm} />;
+    }
+  }
+
   return (
     <Container>
       <Aside>
@@ -22,18 +26,7 @@ export default function Authentication() {
         </SpanWrapper>
         <h1>LOTTERY</h1>
       </Aside>
-      <AuthenticationWrapper>
-        <h1>Authentication</h1>
-        <FormWrapper>
-          <form action="">
-            <Input type="email" placeholder="Email" />
-            <Input type="password" placeholder="Password" />
-          </form>
-          <ForgotPassword>I forgot my password</ForgotPassword>
-          <ArrowedButton text="Log In" color="#B5C401" />
-        </FormWrapper>
-        <ArrowedButton text="Sign Up" color="#707070" />
-      </AuthenticationWrapper>
+      {showUserForm(userForm)}
     </Container>
   );
 }

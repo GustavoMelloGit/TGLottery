@@ -1,20 +1,25 @@
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 import { Button } from "./styles";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
-interface IArrowedButton {
+interface IArrowedButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
-  arrowToRigth?: boolean;
+  arrowToRight?: boolean;
   color?: string;
 }
 
-export default function ArrowedButton({
-  text,
-  arrowToRigth = true,
-  color,
-}: IArrowedButton) {
+export default function ArrowedButton(props: IArrowedButton) {
+  const { text, arrowToRight = true, color } = props;
   return (
-    <Button color={color}>
-      {text} {arrowToRigth ? <AiOutlineArrowRight /> : <AiOutlineArrowLeft />}
+    <Button color={color} {...props}>
+      {arrowToRight ? (
+        <>
+          {text} <AiOutlineArrowRight />
+        </>
+      ) : (
+        <>
+          <AiOutlineArrowLeft /> {text}
+        </>
+      )}
     </Button>
   );
 }

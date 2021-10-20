@@ -48,9 +48,10 @@ export const FormWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  height: 34rem;
+  height: auto;
   width: 35rem;
   margin-bottom: 3rem;
+  padding-bottom: 3rem;
 
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 25px #00000014;
@@ -69,7 +70,7 @@ export const ForgotPassword = styled.button`
   font-style: italic;
   font-weight: 300;
   align-self: flex-end;
-  margin-right: 2.7rem;
+  margin: 3rem 2.7rem;
   cursor: pointer;
 `;
 
@@ -78,6 +79,7 @@ export const Input = styled.input`
   width: 100%;
   padding-left: 3rem;
   padding-right: 1rem;
+  margin-top: 2rem;
   box-sizing: border-box;
 
   outline: none;
