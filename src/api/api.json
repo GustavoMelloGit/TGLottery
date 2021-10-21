@@ -29,7 +29,15 @@
   "users": [
     {
       "email": "test@test.com",
-      "password": "password"
+      "password": "password",
+      "name": "test",
+      "id": "p1"
+    },
+    {
+      "email": "test2@test.com",
+      "password": "password",
+      "name": "test",
+      "id": "p2"
     }
   ]
 }
