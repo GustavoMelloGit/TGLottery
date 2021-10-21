@@ -1,9 +1,9 @@
 import React, { Suspense } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { ProtectedRoute } from "../components/ProtectedRoutes";
 
 const Authentication = React.lazy(() => import("../pages/Authentication"));
-const Home = React.lazy(() => import("../pages/home"));
+const Account = React.lazy(() => import("../pages/Account"));
 
 export default function Routes() {
   console.log("to aqui");
@@ -11,8 +11,8 @@ export default function Routes() {
     <Suspense fallback={<div>Loading...</div>}>
       <Switch>
         <Route path="/" exact component={Authentication} />
-        <ProtectedRoute path="/home" exact component={Home} />
-        <ProtectedRoute path="/home/:personId" exact component={Home} />
+        <ProtectedRoute path="/account/:personId" exact component={Account} />
+        <ProtectedRoute path="/home" exact component={Account} />
       </Switch>
     </Suspense>
   );

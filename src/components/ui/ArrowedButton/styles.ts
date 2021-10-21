@@ -10,6 +10,7 @@ export const Button = styled.button<Props>`
   font-weight: bold;
   font-style: italic;
   border: none;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
   cursor: pointer;
 `;

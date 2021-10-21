@@ -31,13 +31,15 @@
       "email": "test@test.com",
       "password": "password",
       "name": "test",
-      "id": "p1"
+      "id": "p1",
+      "games": []
     },
     {
       "email": "test2@test.com",
       "password": "password",
       "name": "test",
-      "id": "p2"
+      "id": "p2",
+      "games": []
     }
   ]
 }

@@ -5,11 +5,23 @@ export interface UserProps {
   password: string;
   name: string;
   id: string;
+  games: object;
+}
+
+export interface ISignIn {
+  email: string;
+  password: string;
+  name: string;
 }
 
 interface AuthProps {
   user: UserProps;
   isAuthenticated: boolean;
+}
+
+interface ILogin {
+  email: string;
+  password: string;
 }
 const initialState: AuthProps = {
   isAuthenticated: Boolean(localStorage.getItem("isAuthenticated")),
@@ -18,6 +30,7 @@ const initialState: AuthProps = {
     password: "",
     name: "",
     id: "",
+    games: [],
   },
 };
 
@@ -26,10 +39,18 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logIn(state, action) {
-      const data: UserProps = action.payload;
+      const data: ILogin = action.payload;
+
+      const isValid = api.users.find(
+        (user) => user.email === data.email && user.password === data.password
+      );
+
+      if (!isValid) return;
+
       state.user.email = data.email;
       state.user.password = data.password;
-      state.user.id = data.id;
+      state.user.id = isValid.id;
+      state.user.name = isValid.name;
       state.isAuthenticated = true;
       localStorage.setItem("isAuthenticated", "Authenticated");
     },
@@ -39,12 +60,15 @@ const authSlice = createSlice({
       localStorage.removeItem("isAuthenticated");
     },
     signIn(state, action) {
-      const data: UserProps = action.payload;
+      const data: ISignIn = action.payload;
+      const id = new Date().toString();
+
       api.users.push({
         email: data.email,
         name: data.name,
         password: data.password,
-        id: data.id,
+        games: [],
+        id,
       });
     },
   },

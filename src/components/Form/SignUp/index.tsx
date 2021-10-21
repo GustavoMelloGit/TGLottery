@@ -7,7 +7,7 @@ import {
 } from "../../../pages/Authentication/styles";
 import ArrowedButton from "../../ui/ArrowedButton";
 import { useDispatch } from "react-redux";
-import { signIn, UserProps } from "../../../store/auth";
+import { signIn, ISignIn } from "../../../store/auth";
 import api from "../../../api/api.json";
 
 const SignUp: React.FC<FormProps> = (props) => {
@@ -42,12 +42,10 @@ const SignUp: React.FC<FormProps> = (props) => {
     }
 
     //SignIn
-    const id = new Date().toString();
-    const user: UserProps = {
+    const user: ISignIn = {
       email: enteredEmail,
       name: enteredName,
       password: enteredPassword,
-      id: id,
     };
     dispatch(signIn(user));
     alert("Signed in with success!");

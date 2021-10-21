@@ -8,7 +8,7 @@ interface IArrowedButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export default function ArrowedButton(props: IArrowedButton) {
-  const { text, arrowToRight = true, color } = props;
+  const { text, arrowToRight = true, color = "#707070" } = props;
   return (
     <Button color={color} {...props}>
       {arrowToRight ? (
