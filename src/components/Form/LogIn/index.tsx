@@ -10,6 +10,7 @@ import ArrowedButton from "../../ui/ArrowedButton";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../../store/auth";
 import { useHistory } from "react-router-dom";
+import api from "../../../api/api.json";
 
 const LogIn: React.FC<FormProps> = (props) => {
   const dispatch = useDispatch();
@@ -21,20 +22,38 @@ const LogIn: React.FC<FormProps> = (props) => {
   function handleForgotPassword() {
     props.setForm(1);
   }
+  function handleSignIn() {
+    props.setForm(2);
+  }
 
   function handleLoginSubmit(e: FormEvent) {
     e.preventDefault();
 
+    //Guarda as informações digitadas
     const email = emailRef.current!.value.trim();
     const password = passwordRef.current!.value.trim();
     const id = new Date().toString();
+
+    //Valida a digitação
     if (email.length < 6 || !email.includes("@")) {
-      alert("Digite um email válido");
+      alert("Enter a valid email");
       return;
     } else if (password.length < 6) {
-      alert("Digite uma senha válida");
+      alert("Passwords must be longer than 6");
       return;
     }
+
+    //Verifica o usuário
+    const response = api;
+    const validate = response.users.find(
+      (user) => user.email === email && user.password === password
+    );
+    if (!validate) {
+      alert("Senha e/ou e-mail inválidos");
+      return;
+    }
+
+    //Faz login
     dispatch(logIn({ email, password, id }));
     history.push("/home");
   }
@@ -44,8 +63,13 @@ const LogIn: React.FC<FormProps> = (props) => {
       <h1>Authentication</h1>
       <FormWrapper>
         <form onSubmit={handleLoginSubmit}>
-          <Input type="email" placeholder="Email" ref={emailRef} />
-          <Input type="password" placeholder="Password" ref={passwordRef} />
+          <Input type="email" placeholder="Email" ref={emailRef} required />
+          <Input
+            type="password"
+            placeholder="Password"
+            ref={passwordRef}
+            required
+          />
         </form>
         <ForgotPassword onClick={handleForgotPassword}>
           I forgot my password
@@ -56,7 +80,7 @@ const LogIn: React.FC<FormProps> = (props) => {
           color="#B5C401"
         />
       </FormWrapper>
-      <ArrowedButton text="Sign Up" color="#707070" />
+      <ArrowedButton text="Sign Up" onClick={handleSignIn} />
     </AuthenticationWrapper>
   );
 };

@@ -8,8 +8,6 @@ export const ProtectedRoute: React.FC<PrivateRouteProps> = ({ ...rest }) => {
   const userAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
-  if (userAuthenticated) {
-    return <Route {...rest} />;
-  }
-  return <Redirect to="/" />;
+
+  return userAuthenticated ? <Route {...rest} /> : <Redirect to="/" />;
 };

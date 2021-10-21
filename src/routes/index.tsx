@@ -12,6 +12,7 @@ export default function Routes() {
       <Switch>
         <Route path="/" exact component={Authentication} />
         <ProtectedRoute path="/home" exact component={Home} />
+        <ProtectedRoute path="/home/:personId" exact component={Home} />
       </Switch>
     </Suspense>
   );
