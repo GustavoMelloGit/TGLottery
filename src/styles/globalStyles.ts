@@ -20,6 +20,22 @@ const GlobalStyle = createGlobalStyle`
             font-size: 20%;
         }
     }
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #707070;
+        border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #b3afb3;
+    }
+    ::-webkit-scrollbar-track {
+        background: #fff;
+        border-radius: 0px;
+        box-shadow: inset 0px 0px 0px 0px #f0f0f0;
+    }
 `;
 
 export default GlobalStyle;
