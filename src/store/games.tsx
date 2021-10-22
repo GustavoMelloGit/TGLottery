@@ -70,8 +70,9 @@ const gamesSlice = createSlice({
       state.game = initialState.game;
     },
     removeFromCart(state, action) {
-      const data: number = action.payload;
-      state.games.splice(data, 1);
+      const data: { id: number; price: number } = action.payload;
+      state.games.splice(data.id, 1);
+      state.totalPrice -= data.price;
     },
   },
 });

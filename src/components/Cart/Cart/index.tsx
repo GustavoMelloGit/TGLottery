@@ -2,9 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { Centered } from "../../../styles/globalStyles";
+import ArrowedButton from "../../ui/ArrowedButton";
 import Card from "../../ui/Card";
 import CartContent from "../CartContent";
-import { CardContent } from "./styles";
+import { CardContent, SaveWrapper } from "./styles";
 
 export default function Cart() {
   const gamesCtx = useSelector((state: RootState) => state.games.games);
@@ -22,6 +23,9 @@ export default function Cart() {
           )}
         </Centered>
       </CardContent>
+      <SaveWrapper>
+        <ArrowedButton text="Save" color="#27C383" />
+      </SaveWrapper>
     </Card>
   );
 }

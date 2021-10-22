@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-  padding: 3.2rem 1.9rem;
   max-height: 38.8rem;
   max-width: 31.7rem;
   min-width: 23rem;
@@ -9,6 +8,8 @@ export const CardContainer = styled.div`
   border: 1px solid #e2e2e2;
   border-radius: 10px;
   opacity: 1;
+  overflow: hidden;
+
   @media (max-width: 390px) {
     max-width: 100%;
     margin: 0;

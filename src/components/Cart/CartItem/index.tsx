@@ -24,7 +24,7 @@ export default function CartItem(props: ICartItem) {
   });
 
   function handleRemoveItem() {
-    dispatch(removeFromCart(props.id));
+    dispatch(removeFromCart({ id: props.id, price: game!.price }));
   }
   return (
     <ItemContainer>

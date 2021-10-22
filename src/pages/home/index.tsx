@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { addNumberSelected, cleanNumbersArray } from "../../store/games";
 
 //Styles
-
 import {
   Container,
   Content,
