@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     body{
@@ -36,6 +36,14 @@ const GlobalStyle = createGlobalStyle`
         border-radius: 0px;
         box-shadow: inset 0px 0px 0px 0px #f0f0f0;
     }
+`;
+
+export const Centered = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default GlobalStyle;

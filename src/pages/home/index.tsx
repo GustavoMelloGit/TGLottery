@@ -1,8 +1,9 @@
 //Utils
 import React, { useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   addNumberSelected,
+  addToCart,
   cleanNumbersArray,
   completeGame,
 } from "../../store/games";
@@ -11,8 +12,6 @@ import {
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import {
   ActionsList,
-  CardContent,
-  CardContentInner,
   Container,
   Content,
   GameDescription,
@@ -26,17 +25,15 @@ import api from "../../api/api.json";
 import Header from "../../components/layout/Header";
 import GameButton from "../../components/Game/GameButton";
 import ActionButton from "../../components/Game/ActionButton";
-import Card from "../../components/ui/Card";
 import Footer from "../../components/layout/Footer";
 import NumberButton from "../../components/Game/NumberButton";
-import { RootState } from "../../store";
+import Cart from "../../components/Cart/Cart";
 
 export default function Home() {
   const [gameSelected, setGameSelected] = useState(0);
   const dispatch = useDispatch();
 
   const gameResponse = useMemo(() => api.types[gameSelected], [gameSelected]);
-  const user = useSelector((state: RootState) => state.auth.user);
 
   function handleSelectGame(index: number) {
     setGameSelected(index);
@@ -92,7 +89,19 @@ export default function Home() {
       })
     );
   }
-  function handleAddToCart() {}
+  function handleAddToCart() {
+    try {
+      dispatch(
+        addToCart({
+          type: gameResponse.type,
+          min: gameResponse.max_number,
+          price: gameResponse.price,
+        })
+      );
+    } catch (e) {
+      alert(e);
+    }
+  }
 
   return (
     <Container>
@@ -133,14 +142,7 @@ export default function Home() {
             </li>
           </ActionsList>
         </GameWrapper>
-        <Card>
-          <CardContent>
-            <h1>Cart</h1>
-            <CardContentInner>
-              {user.games.length > 0 ? "" : <h2>Carrinho vazio</h2>}
-            </CardContentInner>
-          </CardContent>
-        </Card>
+        <Cart />
       </Content>
       <Footer />
     </Container>

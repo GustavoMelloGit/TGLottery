@@ -48,30 +48,6 @@ export const GameWrapper = styled.div`
   }
 `;
 
-export const CardContent = styled.div`
-  height: 100%;
-  width: 100%;
-  h1 {
-    margin: 0;
-    font-size: 2.4rem;
-    color: #707070;
-    font-style: italic;
-    text-transform: uppercase;
-  }
-`;
-
-export const CardContentInner = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  h2 {
-    color: #707070;
-    font-style: italic;
-    text-transform: uppercase;
-  }
-`;
 export const GameList = styled.ul`
   display: flex;
   li:not(:last-child) {

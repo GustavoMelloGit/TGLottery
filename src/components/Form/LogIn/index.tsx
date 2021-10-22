@@ -7,17 +7,13 @@ import {
   Input,
 } from "../../../pages/Authentication/styles";
 import ArrowedButton from "../../ui/ArrowedButton";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logIn } from "../../../store/auth";
 import { useHistory } from "react-router-dom";
-import { RootState } from "../../../store";
 
 const LogIn: React.FC<FormProps> = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const isAuthenticated = useSelector(
-    (user: RootState) => user.auth.isAuthenticated
-  );
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -36,20 +32,14 @@ const LogIn: React.FC<FormProps> = (props) => {
     const email = emailRef.current!.value.trim();
     const password = passwordRef.current!.value.trim();
 
-    //Valida a digitação
-    if (email.length < 6 || !email.includes("@")) {
-      alert("Enter a valid email");
-      return;
-    } else if (password.length < 6) {
-      alert("Passwords must be longer than 6");
+    //Faz login
+    try {
+      dispatch(logIn({ email, password }));
+    } catch (e) {
+      alert(e);
       return;
     }
-
-    //Faz login
-    dispatch(logIn({ email, password }));
-    if (isAuthenticated) {
-      history.push("/home");
-    } else alert("Email and/or password invalid");
+    history.push("/home");
   }
 
   return (

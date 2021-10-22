@@ -8,7 +8,6 @@ import {
 import ArrowedButton from "../../ui/ArrowedButton";
 import { useDispatch } from "react-redux";
 import { signIn, ISignIn } from "../../../store/auth";
-import api from "../../../api/api.json";
 
 const SignUp: React.FC<FormProps> = (props) => {
   const nameInput = useRef<HTMLInputElement>(null);
@@ -25,29 +24,18 @@ const SignUp: React.FC<FormProps> = (props) => {
     const enteredEmail = emailInput.current!.value;
     const enteredPassword = passwordInput.current!.value;
 
-    //Data validation
-    if (enteredName.trim().length < 2) {
-      alert("Enter a valid name");
-      return;
-    } else if (enteredEmail.length < 6 || !enteredEmail.includes("@")) {
-      alert("Enter a valid email");
-      return;
-    } else if (enteredPassword.trim().length < 6) {
-      alert("Passwords must be longer than 6");
-      return;
-    }
-    if (api.users.find((user) => user.email === enteredEmail)) {
-      alert("Email already exists");
-      return;
-    }
-
     //SignIn
     const user: ISignIn = {
       email: enteredEmail,
       name: enteredName,
       password: enteredPassword,
     };
-    dispatch(signIn(user));
+    try {
+      dispatch(signIn(user));
+    } catch (e) {
+      alert(e);
+      return;
+    }
     alert("Signed in with success!");
     props.setForm(0);
   }

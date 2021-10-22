@@ -9,7 +9,7 @@ interface INumberButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: () => void;
 }
 export default function NumberButton(props: INumberButton) {
-  const numbers = useSelector((state: RootState) => state.games.numbers);
+  const numbers = useSelector((state: RootState) => state.games.game.numbers);
   let selected: boolean = false;
   if (numbers.includes(+props.index)) {
     selected = true;

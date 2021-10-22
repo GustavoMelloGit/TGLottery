@@ -1,17 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
-import api from "../api/api.json";
-interface GameProps {
+export interface GameProps {
   type: string;
   numbers: number[];
+  id: number;
 }
+
+interface IGames {
+  game: GameProps;
+  games: GameProps[];
+  totalPrice: number;
+}
+const initialState: IGames = {
+  game: {
+    id: -1,
+    type: "",
+    numbers: [],
+  },
+  games: [],
+  totalPrice: 0,
+};
 interface INumberProps {
   index: number;
   max: number;
 }
-const initialState: GameProps = {
-  type: "",
-  numbers: [],
-};
 
 const gamesSlice = createSlice({
   name: "Games",
@@ -19,41 +30,57 @@ const gamesSlice = createSlice({
   reducers: {
     addNumberSelected(state, action) {
       const data: INumberProps = action.payload;
-      if (!state.numbers.includes(data.index)) {
-        if (state.numbers.length < data.max) {
-          state.numbers.push(data.index);
+      if (!state.game.numbers.includes(data.index)) {
+        if (state.game.numbers.length < data.max) {
+          state.game.numbers.push(data.index);
         } else {
           throw new Error("Max numbers selected");
         }
       } else {
-        state.numbers.splice(state.numbers.indexOf(data.index), 1);
+        state.game.numbers.splice(state.game.numbers.indexOf(data.index), 1);
       }
     },
     cleanNumbersArray(state) {
-      state.numbers = [];
+      state.game.numbers = [];
     },
     completeGame(state, action) {
-      const data: { max: number; range: number } = action.payload;
+      const data: { max: number; range: number; type: string } = action.payload;
       selectRandomNumbers();
       function randomNumber(min: number, max: number) {
         return Math.floor(Math.random() * (max - min) + min);
       }
 
       function selectRandomNumbers() {
-        if (state.numbers.length < data.max) {
+        if (state.game.numbers.length < data.max) {
           const random = randomNumber(1, data.range);
-          console.log(random);
-          state.numbers.push(random);
+          state.game.numbers.push(random);
           selectRandomNumbers();
         } else return;
       }
     },
     addToCart(state, action) {
-      const data: GameProps = action.payload;
+      const data: { type: string; min: number; price: number } = action.payload;
+      if (state.game.numbers.length < data.min) {
+        throw new Error("Invalid game");
+      }
+      state.game.type = data.type;
+      state.game.id = state.games.length;
+      state.games.push(state.game);
+      state.totalPrice += data.price;
+      state.game = initialState.game;
+    },
+    removeFromCart(state, action) {
+      const data: number = action.payload;
+      state.games.splice(data, 1);
     },
   },
 });
 
-export const { addNumberSelected, cleanNumbersArray, completeGame } =
-  gamesSlice.actions;
+export const {
+  addNumberSelected,
+  cleanNumbersArray,
+  completeGame,
+  addToCart,
+  removeFromCart,
+} = gamesSlice.actions;
 export default gamesSlice.reducer;
