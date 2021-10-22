@@ -69,12 +69,3 @@ export const GameDescription = styled.span`
   font-size: 1.7rem;
   color: #868686;
 `;
-export const ActionsList = styled.ul`
-  display: flex;
-  li:not(:last-child) {
-    margin-right: 2.5rem;
-  }
-  li:last-child {
-    margin-left: auto;
-  }
-`;

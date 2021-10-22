@@ -1,17 +1,11 @@
 //Utils
 import React, { useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  addNumberSelected,
-  addToCart,
-  cleanNumbersArray,
-  completeGame,
-} from "../../store/games";
+import { addNumberSelected, cleanNumbersArray } from "../../store/games";
 
 //Styles
-import { AiOutlineShoppingCart } from "react-icons/ai";
+
 import {
-  ActionsList,
   Container,
   Content,
   GameDescription,
@@ -24,10 +18,10 @@ import api from "../../api/api.json";
 //Components
 import Header from "../../components/layout/Header";
 import GameButton from "../../components/Game/GameButton";
-import ActionButton from "../../components/Game/ActionButton";
 import Footer from "../../components/layout/Footer";
 import NumberButton from "../../components/Game/NumberButton";
 import Cart from "../../components/Cart/Cart";
+import ActionList from "../../components/Game/Actions/ActionList";
 
 export default function Home() {
   const [gameSelected, setGameSelected] = useState(0);
@@ -77,32 +71,6 @@ export default function Home() {
     return numbers;
   };
 
-  function handleClearGame() {
-    dispatch(cleanNumbersArray());
-  }
-  function handleCompleteGame() {
-    dispatch(cleanNumbersArray());
-    dispatch(
-      completeGame({
-        max: gameResponse.max_number,
-        range: gameResponse.range,
-      })
-    );
-  }
-  function handleAddToCart() {
-    try {
-      dispatch(
-        addToCart({
-          type: gameResponse.type,
-          min: gameResponse.max_number,
-          price: gameResponse.price,
-        })
-      );
-    } catch (e) {
-      alert(e);
-    }
-  }
-
   return (
     <Container>
       <Header />
@@ -116,31 +84,7 @@ export default function Home() {
           <h4>Fill your bet</h4>
           <GameDescription>{gameResponse.description}</GameDescription>
           <NumbersWrapper>{getGameNumbers()}</NumbersWrapper>
-          <ActionsList>
-            <li>
-              <ActionButton
-                text="Complete game"
-                gameColor={gameResponse.color}
-                onClick={handleCompleteGame}
-              />
-            </li>
-            <li>
-              <ActionButton
-                text="Clear game"
-                gameColor={gameResponse.color}
-                onClick={handleClearGame}
-              />
-            </li>
-            <li>
-              <ActionButton
-                text="Add to cart"
-                Image={AiOutlineShoppingCart}
-                gameColor={gameResponse.color}
-                onClick={handleAddToCart}
-                filled
-              />
-            </li>
-          </ActionsList>
+          <ActionList gameSelected={gameSelected} />
         </GameWrapper>
         <Cart />
       </Content>
