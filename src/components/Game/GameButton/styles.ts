@@ -13,9 +13,12 @@ export const Button = styled.button<Props>`
 
   background: ${(p) => (p.buttonSelected ? p.color : "#ffff")} no-repeat
     padding-box;
-  border: 2px solid ${(p) => p.color};
+  border: thin solid ${(p) => p.color};
   border-radius: 100px;
   opacity: 1;
   color: ${(p) => (p.buttonSelected ? "white" : p.color)};
   transition: 0.2s;
+  @media (max-width: 390px) {
+    width: fit-content;
+  }
 `;

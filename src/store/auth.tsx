@@ -5,7 +5,7 @@ export interface UserProps {
   password: string;
   name: string;
   id: string;
-  games: object;
+  games: [];
 }
 
 export interface ISignIn {

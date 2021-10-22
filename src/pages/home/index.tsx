@@ -1,28 +1,48 @@
-import React, { useState } from "react";
-import GameButton from "../../components/Game/GameButton";
-import Footer from "../../components/layout/Footer";
-import Header from "../../components/layout/Header";
+//Utils
+import React, { useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addNumberSelected,
+  cleanNumbersArray,
+  completeGame,
+} from "../../store/games";
+
+//Styles
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import {
   ActionsList,
+  CardContent,
+  CardContentInner,
   Container,
   Content,
   GameDescription,
   GameList,
   GameWrapper,
+  NumbersWrapper,
 } from "./styles";
 import api from "../../api/api.json";
+
+//Components
+import Header from "../../components/layout/Header";
+import GameButton from "../../components/Game/GameButton";
 import ActionButton from "../../components/Game/ActionButton";
 import Card from "../../components/ui/Card";
+import Footer from "../../components/layout/Footer";
+import NumberButton from "../../components/Game/NumberButton";
+import { RootState } from "../../store";
 
 export default function Home() {
   const [gameSelected, setGameSelected] = useState(0);
+  const dispatch = useDispatch();
 
-  const gameResponse = api.types[gameSelected];
+  const gameResponse = useMemo(() => api.types[gameSelected], [gameSelected]);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   function handleSelectGame(index: number) {
     setGameSelected(index);
+    dispatch(cleanNumbersArray());
   }
+
   const games = api.types.map((game, index) => (
     <li key={game.type}>
       <GameButton
@@ -34,6 +54,46 @@ export default function Home() {
       />
     </li>
   ));
+
+  const handleAddSelectedNumber = (index: number) => {
+    try {
+      dispatch(addNumberSelected({ index, max: gameResponse.max_number }));
+    } catch (e) {
+      alert(e);
+    }
+  };
+
+  const getGameNumbers = () => {
+    var numbers = [];
+    for (let i = 1; i <= gameResponse.range; i++) {
+      numbers.push(
+        <NumberButton
+          key={i}
+          index={("0" + i).slice(-2)}
+          color={gameResponse.color}
+          onClick={() => {
+            handleAddSelectedNumber(i);
+          }}
+        />
+      );
+    }
+    return numbers;
+  };
+
+  function handleClearGame() {
+    dispatch(cleanNumbersArray());
+  }
+  function handleCompleteGame() {
+    dispatch(cleanNumbersArray());
+    dispatch(
+      completeGame({
+        max: gameResponse.max_number,
+        range: gameResponse.range,
+      })
+    );
+  }
+  function handleAddToCart() {}
+
   return (
     <Container>
       <Header />
@@ -46,25 +106,40 @@ export default function Home() {
           <GameList>{games}</GameList>
           <h4>Fill your bet</h4>
           <GameDescription>{gameResponse.description}</GameDescription>
+          <NumbersWrapper>{getGameNumbers()}</NumbersWrapper>
           <ActionsList>
             <li>
-              <ActionButton text="Complete game" color={gameResponse.color} />
+              <ActionButton
+                text="Complete game"
+                gameColor={gameResponse.color}
+                onClick={handleCompleteGame}
+              />
             </li>
             <li>
-              <ActionButton text="Clear game" color={gameResponse.color} />
+              <ActionButton
+                text="Clear game"
+                gameColor={gameResponse.color}
+                onClick={handleClearGame}
+              />
             </li>
             <li>
               <ActionButton
                 text="Add to cart"
                 Image={AiOutlineShoppingCart}
-                color={gameResponse.color}
+                gameColor={gameResponse.color}
+                onClick={handleAddToCart}
                 filled
               />
             </li>
           </ActionsList>
         </GameWrapper>
         <Card>
-          <h2>Cart</h2>
+          <CardContent>
+            <h1>Cart</h1>
+            <CardContentInner>
+              {user.games.length > 0 ? "" : <h2>Carrinho vazio</h2>}
+            </CardContentInner>
+          </CardContent>
         </Card>
       </Content>
       <Footer />

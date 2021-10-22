@@ -21,4 +21,5 @@ export const Button = styled.button<Props>`
     width: 1.4em;
     margin-right: 1em;
   }
+  transition: 0.4s;
 `;

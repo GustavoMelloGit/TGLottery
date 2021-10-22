@@ -4,16 +4,16 @@ import { Button } from "./styles";
 
 interface IActionButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
-  color: string;
+  gameColor: string;
   filled?: boolean;
   Image?: IconType;
 }
 
 export default function ActionButton(props: IActionButton) {
-  const { text, filled = false, color, Image } = props;
+  const { text, filled = false, gameColor, Image } = props;
 
   return (
-    <Button color={color} filled={filled}>
+    <Button color={gameColor} filled={filled} {...props}>
       {Image && <Image className="icon" />}
       {text}
     </Button>

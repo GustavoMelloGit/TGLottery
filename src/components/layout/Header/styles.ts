@@ -9,7 +9,7 @@ export const Container = styled.header`
 
 export const HeaderContent = styled.div`
   display: flex;
-  padding: 1.5rem 10vw 0 10vw;
+  padding: 1.5rem 13vw 0 13vw;
   justify-content: space-between;
   .link {
     text-decoration: none;

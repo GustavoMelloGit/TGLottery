@@ -10,14 +10,14 @@ const GlobalStyle = createGlobalStyle`
     }
     html{
         font-size: 62.5%;
-        @media(max-width: 700px){
+        @media(max-width: 800px){
             font-size: 50%;
         }
-        @media(max-width: 600px){
+        @media(max-width: 650px){
             font-size: 30%;
         }
-        @media(max-width: 320px){
-            font-size: 20%;
+        @media(max-width: 390px){
+            font-size: 25%;
         }
     }
     ::-webkit-scrollbar {
@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
         background: #b3afb3;
     }
     ::-webkit-scrollbar-track {
-        background: #fff;
+        background: transparent;
         border-radius: 0px;
         box-shadow: inset 0px 0px 0px 0px #f0f0f0;
     }
