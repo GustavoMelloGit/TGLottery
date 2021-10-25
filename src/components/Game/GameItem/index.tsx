@@ -8,15 +8,15 @@ interface IGameItem {
 }
 export default function GameItem(props: IGameItem) {
   const game = api.types.find((game) => game.type === props.type);
-  const dateObj = new Date(props.date * 1000);
+  const dateObj = new Date(props.date);
   const price = game!.price.toLocaleString("pt-br", {
     style: "currency",
     currency: "BRL",
   });
   const date =
-    ("0" + dateObj.getDay()).slice(-2) +
+    ("0" + dateObj.getDate()).slice(-2) +
     "/" +
-    ("0" + dateObj.getMonth()).slice(-2) +
+    ("0" + (dateObj.getMonth() + 1)).slice(-2) +
     "/" +
     dateObj.getFullYear();
   return (

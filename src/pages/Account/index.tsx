@@ -14,13 +14,19 @@ import GamesList from "../../components/Game/GamesList";
 import ArrowedButton from "../../components/ui/ArrowedButton";
 import GameItem from "../../components/Game/GameItem";
 import { useHistory } from "react-router";
+import api from "../../api/api.json";
 
 export default function Home() {
   const [gameSelected, setGameSelected] = useState(0);
   const history = useHistory();
   const savedGames = useSelector((state: RootState) => state.games.savedGames);
-  console.log(savedGames);
-  const games = savedGames.map((game, index) => (
+  const gameResponse = api.types[gameSelected];
+
+  const gameFilter = savedGames.filter(
+    (game) => game.type === gameResponse.type
+  );
+
+  const games = gameFilter.map((game, index) => (
     <li key={index}>
       <GameItem type={game.type} numbers={game.numbers} date={game.date} />
     </li>

@@ -80,7 +80,15 @@ const gamesSlice = createSlice({
       state.totalPrice -= data.price;
     },
     saveGames(state) {
-      state.cartGames.forEach((game) => state.savedGames.push(game));
+      if (state.totalPrice > 30) {
+        state.cartGames.forEach((game) => state.savedGames.push(game));
+      } else {
+        throw new Error("Cart must be at least R$30,00");
+      }
+    },
+    clearCartGames(state) {
+      state.cartGames = [];
+      state.totalPrice = 0;
     },
   },
 });
@@ -92,5 +100,6 @@ export const {
   addToCart,
   removeFromCart,
   saveGames,
+  clearCartGames,
 } = gamesSlice.actions;
 export default gamesSlice.reducer;

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.footer`
   max-height: 7.5rem;
+  min-height: 7rem;
   text-align: center;
   grid-area: footer;
   span {

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { GameProps } from "./games";
 export interface IUser {
   name: string;
   email: string;
@@ -46,6 +45,7 @@ function validEmail(email: string) {
   }
   return true;
 }
+
 function validPassword(password: string) {
   if (password.length < 6) {
     return false;
@@ -67,7 +67,7 @@ const authSlice = createSlice({
       const userExists = state.users.find(
         (user) => user.email === data.email && user.password === data.password
       );
-      if (!userExists) return;
+      if (!userExists) throw new Error("User does not exists");
 
       state.user.email = data.email;
       state.user.password = data.password;

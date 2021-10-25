@@ -28,6 +28,7 @@ export const ContentHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 5rem;
   .button {
     font-size: 2.4rem;
   }
@@ -42,6 +43,9 @@ export const Filters = styled.div`
     font-size: 1.7rem;
     color: #868686;
     font-style: italic;
+  }
+  @media (max-width: 1024px) {
+    margin: 2rem 0;
   }
 `;
 export const GamesListWrapper = styled.ul`
