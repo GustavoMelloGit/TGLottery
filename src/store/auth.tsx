@@ -25,10 +25,10 @@ const initialState: AuthProps = {
   isAuthenticated: Boolean(localStorage.getItem("isAuthenticated")),
   users: [
     {
-      email: "test@test.com",
-      password: "123456",
-      name: "Teste",
-      id: "p1",
+      email: "",
+      password: "",
+      name: "",
+      id: "",
     },
   ],
   user: {
