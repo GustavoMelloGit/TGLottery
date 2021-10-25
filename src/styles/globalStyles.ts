@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     body{
@@ -10,16 +10,40 @@ const GlobalStyle = createGlobalStyle`
     }
     html{
         font-size: 62.5%;
-        @media(max-width: 700px){
+        @media(max-width: 800px){
             font-size: 50%;
         }
-        @media(max-width: 600px){
+        @media(max-width: 650px){
             font-size: 30%;
         }
-        @media(max-width: 320px){
-            font-size: 20%;
+        @media(max-width: 390px){
+            font-size: 25%;
         }
     }
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #707070;
+        border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #b3afb3;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 0px;
+        box-shadow: inset 0px 0px 0px 0px #f0f0f0;
+    }
+`;
+
+export const Centered = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default GlobalStyle;
