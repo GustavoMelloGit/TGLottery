@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store";
+import { saveGames } from "../../../store/auth";
 import { Centered } from "../../../styles/globalStyles";
 import ArrowedButton from "../../ui/ArrowedButton";
 import Card from "../../ui/Card";
@@ -9,6 +10,12 @@ import { CardContent, SaveWrapper } from "./styles";
 
 export default function Cart() {
   const gamesCtx = useSelector((state: RootState) => state.games.games);
+  const user = useSelector((state: RootState) => state.auth.user);
+  const dispatch = useDispatch();
+
+  function handleSaveCart() {
+    dispatch(saveGames({ games: gamesCtx, id: user.id }));
+  }
   return (
     <Card>
       <CardContent>
@@ -23,7 +30,7 @@ export default function Cart() {
           )}
         </Centered>
       </CardContent>
-      <SaveWrapper>
+      <SaveWrapper onClick={handleSaveCart}>
         <ArrowedButton text="Save" color="#27C383" />
       </SaveWrapper>
     </Card>
