@@ -31,7 +31,7 @@ export default function Header() {
               Account
             </Link>
           )}
-          <ArrowedButton text="Sair " className="li" onClick={handleExit} />
+          <ArrowedButton text="Log out " className="li" onClick={handleExit} />
         </List>
       </HeaderContent>
       <Divider />
