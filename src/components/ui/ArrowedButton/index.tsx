@@ -13,11 +13,11 @@ export default function ArrowedButton(props: IArrowedButton) {
     <Button color={color} {...props}>
       {arrowToRight ? (
         <>
-          {text} <AiOutlineArrowRight />
+          {text} <AiOutlineArrowRight className="arrow" />
         </>
       ) : (
         <>
-          <AiOutlineArrowLeft /> {text}
+          <AiOutlineArrowLeft className="arrow" /> {text}
         </>
       )}
     </Button>

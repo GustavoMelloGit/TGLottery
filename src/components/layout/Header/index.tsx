@@ -25,14 +25,15 @@ export default function Header() {
           TGL
         </Link>
         <List>
-          {location.pathname === `/account/${personId}` && (
+          {location.pathname === `/account/${personId}` ? (
             <Link to="/home" className="link home">
               Home
             </Link>
+          ) : (
+            <Link to={`/account/${user.id}`} className="link li">
+              Account
+            </Link>
           )}
-          <Link to={`/account/${user.id}`} className="link li">
-            Account
-          </Link>
           <ArrowedButton text="Sair " className="li" onClick={handleExit} />
         </List>
       </HeaderContent>

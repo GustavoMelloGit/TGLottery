@@ -5,7 +5,6 @@ export interface IUser {
   email: string;
   password: string;
   id: string;
-  games: GameProps[];
 }
 export interface ISignIn {
   email: string;
@@ -31,7 +30,6 @@ const initialState: AuthProps = {
       password: "123456",
       name: "Teste",
       id: "p1",
-      games: [],
     },
   ],
   user: {
@@ -39,7 +37,6 @@ const initialState: AuthProps = {
     password: "",
     name: "",
     id: "",
-    games: [],
   },
 };
 
@@ -104,15 +101,10 @@ const authSlice = createSlice({
         name: data.name,
         password: data.password,
         id,
-        games: [],
       });
-    },
-    saveGames(state, action) {
-      const data: { games: GameProps[]; id: string } = action.payload;
-      state.user.games = data.games;
     },
   },
 });
 
-export const { logIn, logOut, signIn, saveGames } = authSlice.actions;
+export const { logIn, logOut, signIn } = authSlice.actions;
 export default authSlice.reducer;

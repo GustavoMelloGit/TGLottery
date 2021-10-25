@@ -13,4 +13,8 @@ export const Button = styled.button<Props>`
   display: flex;
   align-items: center;
   cursor: pointer;
+  .arrow {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
 `;

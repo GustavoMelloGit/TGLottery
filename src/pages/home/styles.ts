@@ -48,13 +48,6 @@ export const GameWrapper = styled.div`
   }
 `;
 
-export const GameList = styled.ul`
-  display: flex;
-  li:not(:last-child) {
-    margin-right: 2.5rem;
-  }
-`;
-
 export const NumbersWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(9, 1fr);
