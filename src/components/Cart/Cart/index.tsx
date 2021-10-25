@@ -19,7 +19,7 @@ export default function Cart() {
               <CartContent />
             </>
           ) : (
-            <h2>Carrinho vazio</h2>
+            <h2>Empty cart</h2>
           )}
         </Centered>
       </CardContent>

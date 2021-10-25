@@ -16,9 +16,14 @@ export const HeaderContent = styled.div`
     color: #707070;
     font-family: "Arimo";
     font-style: italic;
+    font-size: 4.4rem;
+
+    &.home {
+      font-size: 2rem;
+      align-self: center;
+    }
 
     &.h1 {
-      font-size: 4.4rem;
       font-weight: bold;
       position: relative;
 
