@@ -38,7 +38,7 @@ const gamesSlice = createSlice({
         if (state.game.numbers.length < data.max) {
           state.game.numbers.push(data.index);
         } else {
-          throw new Error("Max numbers selected");
+          throw new Error("Número máximo de números selecionados");
         }
       } else {
         state.game.numbers.splice(state.game.numbers.indexOf(data.index), 1);
@@ -65,7 +65,10 @@ const gamesSlice = createSlice({
     addToCart(state, action) {
       const data: { type: string; min: number; price: number } = action.payload;
       if (state.game.numbers.length < data.min) {
-        throw new Error("Invalid game");
+        const rest = data.min - state.game.numbers.length;
+        throw new Error(
+          `Jogo inválido, restam ${rest} número${rest > 1 ? "s" : ""}`
+        );
       }
       state.game.type = data.type;
       state.game.date = +new Date();
@@ -83,7 +86,7 @@ const gamesSlice = createSlice({
       if (state.totalPrice > 30) {
         state.cartGames.forEach((game) => state.savedGames.push(game));
       } else {
-        throw new Error("Cart must be at least R$30,00");
+        throw new Error("O carrinho precisa ter no mínimo R$30,00");
       }
     },
     clearCartGames(state) {

@@ -61,13 +61,13 @@ const authSlice = createSlice({
       const data: ILogin = action.payload;
 
       if (!validEmail(data.email) || !validPassword(data.password)) {
-        throw new Error("Not a valid email or/and password");
+        throw new Error("E-mail ou senha inválidos");
       }
 
       const userExists = state.users.find(
         (user) => user.email === data.email && user.password === data.password
       );
-      if (!userExists) throw new Error("User does not exists");
+      if (!userExists) throw new Error("Usuário não existe");
 
       state.user.email = data.email;
       state.user.password = data.password;
@@ -85,14 +85,14 @@ const authSlice = createSlice({
       const data: ISignIn = action.payload;
 
       if (data.name.trim().length < 2) {
-        throw new Error("Enter a valid name");
+        throw new Error("Entre um nome válido");
       } else if (!validEmail(data.email)) {
-        throw new Error("Enter a valid email");
+        throw new Error("Entre um e-mail válido");
       } else if (!validPassword(data.password)) {
-        throw new Error("Passwords must be longer than 6");
+        throw new Error("Senhas precisam ser mais longas que 6 caracteres");
       }
       if (state.users.find((user) => user.email === data.email)) {
-        throw new Error("Email already exists");
+        throw new Error("E-mail já está sendo utilizado");
       }
       const id = new Date().toString();
 

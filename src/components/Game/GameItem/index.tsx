@@ -1,6 +1,7 @@
-import { GameContainer, GameInfo, VerticalLine } from "./styles";
+//Utils
 import api from "../../../api/api.json";
-
+//Styling
+import { GameContainer, GameInfo, VerticalLine } from "./styles";
 interface IGameItem {
   type: string;
   numbers: number[];
@@ -19,6 +20,7 @@ export default function GameItem(props: IGameItem) {
     ("0" + (dateObj.getMonth() + 1)).slice(-2) +
     "/" +
     dateObj.getFullYear();
+
   return (
     <GameContainer>
       <VerticalLine color={game!.color} />

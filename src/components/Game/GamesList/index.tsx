@@ -1,8 +1,13 @@
+//Utils
 import { useDispatch } from "react-redux";
 import api from "../../../api/api.json";
 import { cleanNumbersArray } from "../../../store/games";
-import GameButton from "../GameButton";
+
+//Styling
 import { GameList } from "./styles";
+
+//Components
+import GameButton from "../GameButton";
 
 interface IGamesList {
   gameSelected: number;

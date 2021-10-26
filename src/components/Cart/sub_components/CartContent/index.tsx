@@ -1,8 +1,12 @@
-import React from "react";
-import CartList from "../CartList";
-import { CartContentContainer, CartTotal } from "./styles";
+//Utils
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
+import { RootState } from "../../../../store";
+
+//Styling
+import { CartContentContainer, CartTotal } from "./styles";
+
+//Components
+import { CartList } from "..";
 
 export default function CartContent() {
   const price = useSelector(

@@ -1,5 +1,5 @@
 import { useHistory } from "react-router";
-import ArrowedButton from "../../components/ui/ArrowedButton";
+import { ArrowedButton } from "../../components";
 import { Container } from "./styles";
 
 export default function NotFound() {

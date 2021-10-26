@@ -1,13 +1,18 @@
+//Utils
 import React, { useRef } from "react";
 import FormProps from "../../../models/FormProps";
+import { useDispatch } from "react-redux";
+import { signIn, ISignIn } from "../../../store/auth";
+
+//Styling
 import {
   AuthenticationWrapper,
   FormWrapper,
   Input,
 } from "../../../pages/Authentication/styles";
-import ArrowedButton from "../../ui/ArrowedButton";
-import { useDispatch } from "react-redux";
-import { signIn, ISignIn } from "../../../store/auth";
+
+//Components
+import { ArrowedButton } from "../..";
 
 const SignUp: React.FC<FormProps> = (props) => {
   const nameInput = useRef<HTMLInputElement>(null);
@@ -36,7 +41,7 @@ const SignUp: React.FC<FormProps> = (props) => {
       alert(e);
       return;
     }
-    alert("Signed in with success!");
+    alert("Cadastrado com sucesso!");
     props.setForm(0);
   }
   return (

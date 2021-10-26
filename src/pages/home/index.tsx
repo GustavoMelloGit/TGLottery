@@ -14,12 +14,14 @@ import {
 import api from "../../api/api.json";
 
 //Components
-import Header from "../../components/layout/Header";
-import Footer from "../../components/layout/Footer";
-import NumberButton from "../../components/Game/NumberButton";
-import Cart from "../../components/Cart/Cart";
-import ActionList from "../../components/Game/Actions/ActionList";
-import GamesList from "../../components/Game/GamesList";
+import {
+  Header,
+  Footer,
+  ActionList,
+  NumberButton,
+  Cart,
+  GamesList,
+} from "../../components";
 
 export default function Home() {
   const [gameSelected, setGameSelected] = useState(0);

@@ -1,12 +1,16 @@
-import React from "react";
+//Utils
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../../store";
-import { clearCartGames, saveGames } from "../../../store/games";
-import { Centered } from "../../../styles/globalStyles";
-import ArrowedButton from "../../ui/ArrowedButton";
-import Card from "../../ui/Card";
-import CartContent from "../CartContent";
+import { RootState } from "../../store";
+import { clearCartGames, saveGames } from "../../store/games";
+
+//Styling
 import { CardContent, SaveWrapper } from "./styles";
+import { Centered } from "../../styles/globalStyles";
+
+//Components
+import { CartContent } from "./sub_components";
+import ArrowedButton from "../ui/ArrowedButton";
+import Card from "../ui/Card";
 
 export default function Cart() {
   const gamesCtx = useSelector((state: RootState) => state.games);

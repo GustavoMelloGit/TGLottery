@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
-import { ProtectedRoute } from "../components/ProtectedRoutes";
+import { ProtectedRoute } from "../components/ProtectedRoute";
 import { Loading } from "../pages/Loading";
 import NotFound from "../pages/NotFound";
 

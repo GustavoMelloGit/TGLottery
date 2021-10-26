@@ -1,15 +1,20 @@
+//Utils
 import { FormEvent, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { logIn } from "../../../store/auth";
+import { useHistory } from "react-router-dom";
 import FormProps from "../../../models/FormProps";
+
+//Styling
 import {
   AuthenticationWrapper,
   ForgotPassword,
   FormWrapper,
   Input,
 } from "../../../pages/Authentication/styles";
-import ArrowedButton from "../../ui/ArrowedButton";
-import { useDispatch } from "react-redux";
-import { logIn } from "../../../store/auth";
-import { useHistory } from "react-router-dom";
+
+//Components
+import { ArrowedButton } from "../..";
 
 const LogIn: React.FC<FormProps> = (props) => {
   const dispatch = useDispatch();

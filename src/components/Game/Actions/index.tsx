@@ -1,14 +1,18 @@
-import React from "react";
-import { ActionsListContainer } from "./styles";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import ActionButton from "../ActionButton";
-import api from "../../../../api/api.json";
+//Utils
+import api from "../../../api/api.json";
 import { useDispatch } from "react-redux";
 import {
   addToCart,
   cleanNumbersArray,
   completeGame,
-} from "../../../../store/games";
+} from "../../../store/games";
+
+//Styling
+import { ActionsListContainer } from "./styles";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
+//Components
+import ActionButton from "./sub_components/ActionButton";
 
 interface IActionList {
   gameSelected: number;

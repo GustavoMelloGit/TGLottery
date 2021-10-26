@@ -1,4 +1,6 @@
-import React, { ButtonHTMLAttributes } from "react";
+//Utils
+import { ButtonHTMLAttributes } from "react";
+//Styling
 import { Button } from "./styles";
 
 interface IGameButton extends ButtonHTMLAttributes<HTMLButtonElement> {

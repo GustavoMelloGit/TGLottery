@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+//Utils
+import { useState } from "react";
+
+//Styling
 import { Aside, Container, SpanWrapper } from "./styles";
-import LogIn from "../../components/Form/LogIn";
-import ResetPassword from "../../components/Form/ResetPassword";
-import SignUp from "../../components/Form/SignUp";
+
+//Components
+import { LogIn, ResetPassword, SignUp } from "../../components";
 
 export default function Authentication() {
   const [userForm, setUserForm] = useState(0);

@@ -1,8 +1,12 @@
-import React from "react";
-import { ItemsList } from "./styles";
+//Utils
+import { RootState } from "../../../../store";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
-import CartItem from "../CartItem";
+
+//Styling
+import { ItemsList } from "./styles";
+
+//Components
+import { CartItem } from "..";
 
 export default function CartList() {
   const games = useSelector((state: RootState) => state.games);
