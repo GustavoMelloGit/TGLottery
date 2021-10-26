@@ -2,7 +2,7 @@ import React from "react";
 import { Divider } from "../../ui/Divider";
 import { Container } from "./style";
 
-export default function Footer() {
+export default function Footer(): JSX.Element {
   return (
     <Container>
       <Divider />

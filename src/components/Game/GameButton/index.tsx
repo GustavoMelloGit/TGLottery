@@ -1,4 +1,6 @@
-import React, { ButtonHTMLAttributes } from "react";
+//Utils
+import { ButtonHTMLAttributes } from "react";
+//Styling
 import { Button } from "./styles";
 
 interface IGameButton extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -7,7 +9,7 @@ interface IGameButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   index: number;
   selected: number;
 }
-export default function GameButton(props: IGameButton) {
+export default function GameButton(props: IGameButton): JSX.Element {
   const isSelected = props.index === props.selected;
   return (
     <Button buttonSelected={isSelected} color={props.textColor} {...props}>

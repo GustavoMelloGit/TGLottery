@@ -1,12 +1,13 @@
-import { GameContainer, GameInfo, VerticalLine } from "./styles";
+//Utils
 import api from "../../../api/api.json";
-
+//Styling
+import { GameContainer, GameInfo, VerticalLine } from "./styles";
 interface IGameItem {
   type: string;
   numbers: number[];
   date: number;
 }
-export default function GameItem(props: IGameItem) {
+export default function GameItem(props: IGameItem): JSX.Element {
   const game = api.types.find((game) => game.type === props.type);
   const dateObj = new Date(props.date);
   const price = game!.price.toLocaleString("pt-br", {
@@ -19,6 +20,7 @@ export default function GameItem(props: IGameItem) {
     ("0" + (dateObj.getMonth() + 1)).slice(-2) +
     "/" +
     dateObj.getFullYear();
+
   return (
     <GameContainer>
       <VerticalLine color={game!.color} />

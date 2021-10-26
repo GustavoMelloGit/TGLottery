@@ -1,10 +1,14 @@
-import React from "react";
-import CartList from "../CartList";
-import { CartContentContainer, CartTotal } from "./styles";
+//Utils
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
+import { RootState } from "../../../../store";
 
-export default function CartContent() {
+//Styling
+import { CartContentContainer, CartTotal } from "./styles";
+
+//Components
+import { CartList } from "..";
+
+export default function CartContent(): JSX.Element {
   const price = useSelector(
     (state: RootState) => state.games.totalPrice
   ).toLocaleString("pt-br", { style: "currency", currency: "BRL" });

@@ -1,19 +1,25 @@
-import React from "react";
-import { ActionsListContainer } from "./styles";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import ActionButton from "../ActionButton";
-import api from "../../../../api/api.json";
+//Utils
+import api from "../../../api/api.json";
 import { useDispatch } from "react-redux";
 import {
   addToCart,
   cleanNumbersArray,
   completeGame,
-} from "../../../../store/games";
+} from "../../../store/games";
+import toast from "react-hot-toast";
+
+//Styling
+import { ActionsListContainer } from "./styles";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
+//Components
+import ActionButton from "./sub_components/ActionButton";
 
 interface IActionList {
   gameSelected: number;
 }
-export default function ActionList({ gameSelected }: IActionList) {
+
+export default function ActionList({ gameSelected }: IActionList): JSX.Element {
   const dispatch = useDispatch();
   const gameResponse = api.types[gameSelected];
 
@@ -38,8 +44,8 @@ export default function ActionList({ gameSelected }: IActionList) {
           price: gameResponse.price,
         })
       );
-    } catch (e) {
-      alert(e);
+    } catch (e: any) {
+      toast.error(e.message);
     }
   }
   return (

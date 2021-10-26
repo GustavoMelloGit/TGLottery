@@ -1,10 +1,14 @@
-import React from "react";
-import { ItemsList } from "./styles";
+//Utils
+import { RootState } from "../../../../store";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
-import CartItem from "../CartItem";
 
-export default function CartList() {
+//Styling
+import { ItemsList } from "./styles";
+
+//Components
+import { CartItem } from "..";
+
+export default function CartList(): JSX.Element {
   const games = useSelector((state: RootState) => state.games);
   return (
     <ItemsList>

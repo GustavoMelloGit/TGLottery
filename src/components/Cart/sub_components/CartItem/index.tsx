@@ -1,9 +1,11 @@
-import React from "react";
-import { GameInfo, ItemContainer } from "./styles";
-import { FiTrash2 } from "react-icons/fi";
-import api from "../../../api/api.json";
+//Utils
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../../../store/games";
+import { removeFromCart } from "../../../../store/games";
+import api from "../../../../api/api.json";
+
+//Styling
+import { FiTrash2 } from "react-icons/fi";
+import { GameInfo, ItemContainer } from "./styles";
 
 interface ICartItem {
   numbers: number[];
@@ -11,7 +13,7 @@ interface ICartItem {
   id: number;
 }
 
-export default function CartItem(props: ICartItem) {
+export default function CartItem(props: ICartItem): JSX.Element {
   const game = api.types.find((game) => game.type === props.type);
   const dispatch = useDispatch();
 

@@ -1,8 +1,13 @@
+//Utils
 import { useDispatch } from "react-redux";
 import api from "../../../api/api.json";
 import { cleanNumbersArray } from "../../../store/games";
-import GameButton from "../GameButton";
+
+//Styling
 import { GameList } from "./styles";
+
+//Components
+import GameButton from "../GameButton";
 
 interface IGamesList {
   gameSelected: number;
@@ -11,7 +16,7 @@ interface IGamesList {
 export default function GamesList({
   gameSelected,
   setGameSelected,
-}: IGamesList) {
+}: IGamesList): JSX.Element {
   const dispatch = useDispatch();
 
   function handleSelectGame(index: number) {

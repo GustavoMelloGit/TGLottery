@@ -7,7 +7,7 @@ import { RootState } from "../../../store";
 import { logOut } from "../../../store/auth";
 import { Divider } from "../../ui/Divider";
 
-export default function Header() {
+export default function Header(): JSX.Element {
   const user = useSelector((state: RootState) => state.auth.user);
   const dispatch = useDispatch();
   const location = useLocation();

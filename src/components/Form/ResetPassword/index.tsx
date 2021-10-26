@@ -1,10 +1,15 @@
+//Utils
 import FormProps from "../../../models/FormProps";
+
+//Styling
 import {
   AuthenticationWrapper,
   FormWrapper,
   Input,
 } from "../../../pages/Authentication/styles";
-import ArrowedButton from "../../ui/ArrowedButton";
+
+//Components
+import { ArrowedButton } from "../..";
 
 const ResetPassword: React.FC<FormProps> = (props) => {
   function handleGoBack() {

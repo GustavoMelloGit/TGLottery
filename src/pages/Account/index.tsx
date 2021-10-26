@@ -1,5 +1,11 @@
-import React, { useState } from "react";
-import Header from "../../components/layout/Header";
+//Utils
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { useHistory } from "react-router";
+import api from "../../api/api.json";
+
+//Styling
 import {
   Container,
   Content,
@@ -7,16 +13,17 @@ import {
   Filters,
   GamesListWrapper,
 } from "./styles";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import Footer from "../../components/layout/Footer";
-import GamesList from "../../components/Game/GamesList";
-import ArrowedButton from "../../components/ui/ArrowedButton";
-import GameItem from "../../components/Game/GameItem";
-import { useHistory } from "react-router";
-import api from "../../api/api.json";
 
-export default function Home() {
+//Components
+import {
+  Header,
+  Footer,
+  GamesList,
+  ArrowedButton,
+  GameItem,
+} from "../../components";
+
+export default function Home(): JSX.Element {
   const [gameSelected, setGameSelected] = useState(0);
   const history = useHistory();
   const savedGames = useSelector((state: RootState) => state.games.savedGames);

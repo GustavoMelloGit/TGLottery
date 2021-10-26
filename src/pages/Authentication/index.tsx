@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { Aside, Container, SpanWrapper } from "./styles";
-import LogIn from "../../components/Form/LogIn";
-import ResetPassword from "../../components/Form/ResetPassword";
-import SignUp from "../../components/Form/SignUp";
+//Utils
+import { useState } from "react";
 
-export default function Authentication() {
+//Styling
+import { Aside, Container, SpanWrapper } from "./styles";
+
+//Components
+import { LogIn, ResetPassword, SignUp } from "../../components";
+
+export default function Authentication(): JSX.Element {
   const [userForm, setUserForm] = useState(0);
 
   function showUserForm(index: number) {
