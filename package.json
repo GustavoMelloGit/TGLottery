@@ -30,7 +30,8 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:cypress/recommended"
     ]
   },
   "browserslist": {
@@ -45,8 +46,13 @@
       "last 1 safari version"
     ]
   },
+  
   "devDependencies": {
+    "@cypress/react": "^5.10.1",
+    "@cypress/webpack-dev-server": "^1.7.0",
     "@types/react-router-dom": "^5.3.1",
-    "@types/styled-components": "^5.1.15"
+    "@types/styled-components": "^5.1.15",
+    "cypress": "^8.7.0",
+    "eslint-plugin-cypress": "^2.12.1"
   }
 }

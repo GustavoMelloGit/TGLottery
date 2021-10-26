@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   const getGameNumbers = () => {
-    var numbers = [];
+    let numbers = [];
     for (let i = 1; i <= gameResponse.range; i++) {
       numbers.push(
         <NumberButton

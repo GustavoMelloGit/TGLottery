@@ -13,6 +13,7 @@ import {
 interface IActionList {
   gameSelected: number;
 }
+
 export default function ActionList({ gameSelected }: IActionList) {
   const dispatch = useDispatch();
   const gameResponse = api.types[gameSelected];
