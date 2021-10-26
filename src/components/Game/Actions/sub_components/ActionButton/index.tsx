@@ -11,7 +11,7 @@ interface IActionButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   Image?: IconType;
 }
 
-export default function ActionButton(props: IActionButton) {
+export default function ActionButton(props: IActionButton): JSX.Element {
   const { text, filled = false, gameColor, Image } = props;
 
   return (

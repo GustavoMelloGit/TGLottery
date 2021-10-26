@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { logIn } from "../../../store/auth";
 import { useHistory } from "react-router-dom";
 import FormProps from "../../../models/FormProps";
+import toast from "react-hot-toast";
 
 //Styling
 import {
@@ -14,7 +15,7 @@ import {
 } from "../../../pages/Authentication/styles";
 
 //Components
-import { ArrowedButton } from "../..";
+import { ArrowedButton, Toast } from "../..";
 
 const LogIn: React.FC<FormProps> = (props) => {
   const dispatch = useDispatch();
@@ -40,37 +41,40 @@ const LogIn: React.FC<FormProps> = (props) => {
     //Faz login
     try {
       dispatch(logIn({ email, password }));
-    } catch (e) {
-      alert(e);
+    } catch (e: any) {
+      toast.error(e.message);
       return;
     }
     history.push("/home");
   }
 
   return (
-    <AuthenticationWrapper>
-      <h1>Authentication</h1>
-      <FormWrapper>
-        <form onSubmit={handleLoginSubmit}>
-          <Input type="email" placeholder="Email" ref={emailRef} required />
-          <Input
-            type="password"
-            placeholder="Password"
-            ref={passwordRef}
-            required
+    <>
+      <AuthenticationWrapper>
+        <h1>Authentication</h1>
+        <FormWrapper>
+          <form onSubmit={handleLoginSubmit}>
+            <Input type="email" placeholder="Email" ref={emailRef} required />
+            <Input
+              type="password"
+              placeholder="Password"
+              ref={passwordRef}
+              required
+            />
+          </form>
+          <ForgotPassword onClick={handleForgotPassword}>
+            I forgot my password
+          </ForgotPassword>
+          <ArrowedButton
+            onClick={handleLoginSubmit}
+            text="Log In"
+            color="#B5C401"
           />
-        </form>
-        <ForgotPassword onClick={handleForgotPassword}>
-          I forgot my password
-        </ForgotPassword>
-        <ArrowedButton
-          onClick={handleLoginSubmit}
-          text="Log In"
-          color="#B5C401"
-        />
-      </FormWrapper>
-      <ArrowedButton text="Sign Up" onClick={handleSignIn} />
-    </AuthenticationWrapper>
+        </FormWrapper>
+        <ArrowedButton text="Sign Up" onClick={handleSignIn} />
+      </AuthenticationWrapper>
+      <Toast />
+    </>
   );
 };
 

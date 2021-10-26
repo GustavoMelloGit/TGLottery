@@ -6,6 +6,7 @@ import {
   cleanNumbersArray,
   completeGame,
 } from "../../../store/games";
+import toast from "react-hot-toast";
 
 //Styling
 import { ActionsListContainer } from "./styles";
@@ -18,7 +19,7 @@ interface IActionList {
   gameSelected: number;
 }
 
-export default function ActionList({ gameSelected }: IActionList) {
+export default function ActionList({ gameSelected }: IActionList): JSX.Element {
   const dispatch = useDispatch();
   const gameResponse = api.types[gameSelected];
 
@@ -43,8 +44,8 @@ export default function ActionList({ gameSelected }: IActionList) {
           price: gameResponse.price,
         })
       );
-    } catch (e) {
-      alert(e);
+    } catch (e: any) {
+      toast.error(e.message);
     }
   }
   return (

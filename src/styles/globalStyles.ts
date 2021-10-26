@@ -20,6 +20,9 @@ const GlobalStyle = createGlobalStyle`
             font-size: 25%;
         }
     }
+    .toaster{
+        font-size: 1.6rem;
+    }
     ::-webkit-scrollbar {
         width: 6px;
         height: 6px;

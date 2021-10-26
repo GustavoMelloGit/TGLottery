@@ -2,6 +2,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store";
 import { clearCartGames, saveGames } from "../../store/games";
+import { toast } from "react-hot-toast";
 
 //Styling
 import { CardContent, SaveWrapper } from "./styles";
@@ -11,18 +12,22 @@ import { Centered } from "../../styles/globalStyles";
 import { CartContent } from "./sub_components";
 import ArrowedButton from "../ui/ArrowedButton";
 import Card from "../ui/Card";
+import { useHistory } from "react-router";
+import { Toast } from "..";
 
-export default function Cart() {
+export default function Cart(): JSX.Element {
   const gamesCtx = useSelector((state: RootState) => state.games);
+  const user = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   function handleSaveCart() {
     try {
       dispatch(saveGames());
       dispatch(clearCartGames());
-      alert("Game(s) saved!");
-    } catch (e) {
-      alert(e);
+      history.push(`/account/${user.user.id}`);
+    } catch (e: any) {
+      toast.error(e.message);
       return;
     }
   }
@@ -43,6 +48,7 @@ export default function Cart() {
       <SaveWrapper onClick={handleSaveCart}>
         <ArrowedButton text="Save" color="#27C383" />
       </SaveWrapper>
+      <Toast />
     </Card>
   );
 }

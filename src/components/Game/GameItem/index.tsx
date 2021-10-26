@@ -7,7 +7,7 @@ interface IGameItem {
   numbers: number[];
   date: number;
 }
-export default function GameItem(props: IGameItem) {
+export default function GameItem(props: IGameItem): JSX.Element {
   const game = api.types.find((game) => game.type === props.type);
   const dateObj = new Date(props.date);
   const price = game!.price.toLocaleString("pt-br", {

@@ -8,7 +8,7 @@ import { CartContentContainer, CartTotal } from "./styles";
 //Components
 import { CartList } from "..";
 
-export default function CartContent() {
+export default function CartContent(): JSX.Element {
   const price = useSelector(
     (state: RootState) => state.games.totalPrice
   ).toLocaleString("pt-br", { style: "currency", currency: "BRL" });

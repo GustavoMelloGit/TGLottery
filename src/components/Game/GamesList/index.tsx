@@ -16,7 +16,7 @@ interface IGamesList {
 export default function GamesList({
   gameSelected,
   setGameSelected,
-}: IGamesList) {
+}: IGamesList): JSX.Element {
   const dispatch = useDispatch();
 
   function handleSelectGame(index: number) {

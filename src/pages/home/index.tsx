@@ -2,6 +2,7 @@
 import React, { useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addNumberSelected } from "../../store/games";
+import toast from "react-hot-toast";
 
 //Styles
 import {
@@ -21,9 +22,10 @@ import {
   NumberButton,
   Cart,
   GamesList,
+  Toast,
 } from "../../components";
 
-export default function Home() {
+export default function Home(): JSX.Element {
   const [gameSelected, setGameSelected] = useState(0);
   const dispatch = useDispatch();
 
@@ -32,8 +34,8 @@ export default function Home() {
   const handleAddSelectedNumber = (index: number) => {
     try {
       dispatch(addNumberSelected({ index, max: gameResponse.max_number }));
-    } catch (e) {
-      alert(e);
+    } catch (e: any) {
+      toast.error(e.message);
     }
   };
 
@@ -75,6 +77,7 @@ export default function Home() {
         <Cart />
       </Content>
       <Footer />
+      <Toast />
     </Container>
   );
 }

@@ -8,7 +8,7 @@ import { ItemsList } from "./styles";
 //Components
 import { CartItem } from "..";
 
-export default function CartList() {
+export default function CartList(): JSX.Element {
   const games = useSelector((state: RootState) => state.games);
   return (
     <ItemsList>

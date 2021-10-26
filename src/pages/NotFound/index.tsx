@@ -2,7 +2,7 @@ import { useHistory } from "react-router";
 import { ArrowedButton } from "../../components";
 import { Container } from "./styles";
 
-export default function NotFound() {
+export default function NotFound(): JSX.Element {
   const history = useHistory();
   function handleGoBack() {
     history.replace("/home");

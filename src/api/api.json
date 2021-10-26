@@ -18,6 +18,14 @@
       "color": "#01AC66"
     },
     {
+      "type": "Test",
+      "description": "Escolha 6 números dos 60 disponíveis na mega-sena. Ganhe com 6, 5 ou 4 acertos. São realizados dois sorteios semanais para você apostar e torcer para ficar milionário.",
+      "range": 60,
+      "price": 31,
+      "max_number": 6,
+      "color": "#01AC66"
+    },
+    {
       "type": "Lotomania",
       "description": "Escolha 5 números dos 80 disponíveis na quina. 5, 4, 3 ou 2 acertos. São seis sorteios semanais e seis chances de ganhar.",
       "range": 80,

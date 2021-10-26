@@ -10,9 +10,10 @@ import {
   FormWrapper,
   Input,
 } from "../../../pages/Authentication/styles";
+import toast from "react-hot-toast";
 
 //Components
-import { ArrowedButton } from "../..";
+import { ArrowedButton, Toast } from "../..";
 
 const SignUp: React.FC<FormProps> = (props) => {
   const nameInput = useRef<HTMLInputElement>(null);
@@ -37,34 +38,41 @@ const SignUp: React.FC<FormProps> = (props) => {
     };
     try {
       dispatch(signIn(user));
-    } catch (e) {
-      alert(e);
+    } catch (e: any) {
+      toast.error(e.message);
       return;
     }
-    alert("Cadastrado com sucesso!");
+    toast.success("Cadastrado com sucesso!");
     props.setForm(0);
   }
   return (
-    <AuthenticationWrapper>
-      <h1>Registration</h1>
-      <FormWrapper>
-        <Input type="text" placeholder="Name" required ref={nameInput} />
-        <Input type="email" placeholder="Email" required ref={emailInput} />
-        <Input
-          type="password"
-          placeholder="Password"
-          required
-          ref={passwordInput}
-        />
+    <>
+      <AuthenticationWrapper>
+        <h1>Registration</h1>
+        <FormWrapper>
+          <Input type="text" placeholder="Name" required ref={nameInput} />
+          <Input type="email" placeholder="Email" required ref={emailInput} />
+          <Input
+            type="password"
+            placeholder="Password"
+            required
+            ref={passwordInput}
+          />
+          <ArrowedButton
+            text="Register"
+            color="#B5C401"
+            style={{ marginTop: 20 }}
+            onClick={handleSignIn}
+          />
+        </FormWrapper>
         <ArrowedButton
-          text="Register"
-          color="#B5C401"
-          style={{ marginTop: 20 }}
-          onClick={handleSignIn}
+          text="Back"
+          arrowToRight={false}
+          onClick={handleGoBack}
         />
-      </FormWrapper>
-      <ArrowedButton text="Back" arrowToRight={false} onClick={handleGoBack} />
-    </AuthenticationWrapper>
+      </AuthenticationWrapper>
+      <Toast />
+    </>
   );
 };
 

@@ -11,7 +11,7 @@ interface INumberButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   color: string;
   onClick: () => void;
 }
-export default function NumberButton(props: INumberButton) {
+export default function NumberButton(props: INumberButton): JSX.Element {
   const numbers = useSelector((state: RootState) => state.games.game.numbers);
   let selected: boolean = false;
   if (numbers.includes(+props.index)) {

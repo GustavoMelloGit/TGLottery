@@ -13,7 +13,7 @@ interface ICartItem {
   id: number;
 }
 
-export default function CartItem(props: ICartItem) {
+export default function CartItem(props: ICartItem): JSX.Element {
   const game = api.types.find((game) => game.type === props.type);
   const dispatch = useDispatch();
 

@@ -23,7 +23,7 @@ import {
   GameItem,
 } from "../../components";
 
-export default function Home() {
+export default function Home(): JSX.Element {
   const [gameSelected, setGameSelected] = useState(0);
   const history = useHistory();
   const savedGames = useSelector((state: RootState) => state.games.savedGames);

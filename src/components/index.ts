@@ -16,6 +16,7 @@ import NumberButton from "./Game/NumberButton";
 //Layout
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
+import Toast from "./layout/Toast";
 
 //ui
 import ArrowedButton from "./ui/ArrowedButton";
@@ -37,4 +38,5 @@ export {
   ArrowedButton,
   Card,
   Divider,
+  Toast,
 };

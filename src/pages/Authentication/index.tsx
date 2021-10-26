@@ -7,7 +7,7 @@ import { Aside, Container, SpanWrapper } from "./styles";
 //Components
 import { LogIn, ResetPassword, SignUp } from "../../components";
 
-export default function Authentication() {
+export default function Authentication(): JSX.Element {
   const [userForm, setUserForm] = useState(0);
 
   function showUserForm(index: number) {
