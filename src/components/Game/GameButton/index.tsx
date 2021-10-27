@@ -11,7 +11,12 @@ interface IGameButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 export default function GameButton(props: IGameButton): JSX.Element {
   return (
-    <Button buttonSelected={props.selected} color={props.textColor} {...props}>
+    <Button
+      buttonSelected={props.selected}
+      color={props.textColor}
+      data-cy={`gameType-button(${props.index})`}
+      {...props}
+    >
       {props.text}
     </Button>
   );

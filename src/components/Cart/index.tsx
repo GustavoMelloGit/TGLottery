@@ -56,7 +56,7 @@ export default function Cart(): JSX.Element {
         </CartTotal>
       </CardContent>
       <SaveWrapper onClick={handleSaveCart}>
-        <ArrowedButton text="Save" color="#27C383" />
+        <ArrowedButton text="Save" color="#27C383" data-cy="saveCart-button" />
       </SaveWrapper>
       <Toast />
     </Card>

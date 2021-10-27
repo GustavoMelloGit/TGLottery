@@ -5,6 +5,12 @@ import store from "./store";
 import { Provider } from "react-redux";
 import App from "./App";
 
+//@ts-ignore
+if (window.Cypress) {
+  //@ts-ignore
+  window.store = store;
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

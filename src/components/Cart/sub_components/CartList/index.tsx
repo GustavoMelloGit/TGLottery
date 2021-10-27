@@ -11,7 +11,7 @@ import { CartItem } from "..";
 export default function CartList(): JSX.Element {
   const games = useSelector((state: RootState) => state.games);
   return (
-    <ItemsList>
+    <ItemsList data-cy="cartList-ul">
       {games.cartGames.map((game, index) => (
         <CartItem
           key={index}
