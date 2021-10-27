@@ -31,3 +31,11 @@ export const SaveWrapper = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const CartTotal = styled.div`
+  margin: 2rem 0;
+  span {
+    font-style: normal;
+    font-weight: lighter;
+  }
+`;

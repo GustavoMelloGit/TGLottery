@@ -29,7 +29,7 @@ export default function GamesList({
         text={game.type}
         textColor={game.color}
         index={index}
-        selected={gameSelected}
+        selected={gameSelected === index}
         onClick={() => handleSelectGame(index)}
       />
     </li>

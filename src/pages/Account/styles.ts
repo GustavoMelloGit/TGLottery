@@ -36,22 +36,30 @@ export const ContentHeader = styled.div`
     flex-direction: column;
   }
 `;
-export const Filters = styled.div`
+export const Filters = styled.ul`
   display: flex;
   align-items: center;
+  list-style: none;
+  li:not(:last-child) {
+    margin-right: 2rem;
+  }
   span {
     font-size: 1.7rem;
     color: #868686;
     font-style: italic;
+    margin-right: 2rem;
   }
+
   @media (max-width: 1024px) {
     margin: 2rem 0;
   }
 `;
 export const GamesListWrapper = styled.ul`
+  max-height: 50rem;
   list-style: none;
   padding: 0;
   li:not(:last-child) {
     margin-bottom: 2.5rem;
   }
+  overflow: scroll;
 `;

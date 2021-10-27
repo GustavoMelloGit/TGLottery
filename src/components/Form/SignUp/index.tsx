@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import FormProps from "../../../models/FormProps";
 import { useDispatch } from "react-redux";
-import { signIn, ISignIn } from "../../../store/auth";
+import { signIn } from "../../../store/auth";
 
 //Styling
 import {
@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 
 //Components
 import { ArrowedButton, Toast } from "../..";
+import { ISignIn } from "../../../models/AuthInterfaces";
 
 const SignUp: React.FC<FormProps> = (props) => {
   const nameInput = useRef<HTMLInputElement>(null);

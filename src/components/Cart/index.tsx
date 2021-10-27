@@ -5,13 +5,12 @@ import { clearCartGames, saveGames } from "../../store/games";
 import { toast } from "react-hot-toast";
 
 //Styling
-import { CardContent, SaveWrapper } from "./styles";
+import { CardContent, SaveWrapper, CartTotal } from "./styles";
 import { Centered } from "../../styles/globalStyles";
 
 //Components
-import { CartContent } from "./sub_components";
-import ArrowedButton from "../ui/ArrowedButton";
-import Card from "../ui/Card";
+import { CartList } from "./sub_components";
+import { ArrowedButton, Card } from "..";
 import { useHistory } from "react-router";
 import { Toast } from "..";
 
@@ -20,6 +19,10 @@ export default function Cart(): JSX.Element {
   const user = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
+  const price = gamesCtx.totalPrice.toLocaleString("pt-br", {
+    style: "currency",
+    currency: "BRL",
+  });
 
   function handleSaveCart() {
     try {
@@ -38,12 +41,19 @@ export default function Cart(): JSX.Element {
         <Centered>
           {gamesCtx.cartGames.length > 0 ? (
             <>
-              <CartContent />
+              <CartList />
             </>
           ) : (
-            <h2>Empty cart</h2>
+            <>
+              <h2>Empty cart</h2>
+            </>
           )}
         </Centered>
+        <CartTotal>
+          <h1>
+            Cart <span>total: {price}</span>
+          </h1>
+        </CartTotal>
       </CardContent>
       <SaveWrapper onClick={handleSaveCart}>
         <ArrowedButton text="Save" color="#27C383" />

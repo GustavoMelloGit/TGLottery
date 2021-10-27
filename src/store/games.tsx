@@ -1,17 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-export interface GameProps {
-  type: string;
-  numbers: number[];
-  date: number;
-  id: number;
-}
-
-interface IGames {
-  game: GameProps;
-  cartGames: GameProps[];
-  savedGames: GameProps[];
-  totalPrice: number;
-}
+import { IGames, INumberProps } from "../models/GamesInterfaces";
 const initialState: IGames = {
   game: {
     id: -1,
@@ -23,11 +11,6 @@ const initialState: IGames = {
   savedGames: [],
   totalPrice: 0,
 };
-interface INumberProps {
-  index: number;
-  max: number;
-}
-
 const gamesSlice = createSlice({
   name: "Games",
   initialState,
