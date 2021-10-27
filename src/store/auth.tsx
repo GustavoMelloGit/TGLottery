@@ -1,34 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-export interface IUser {
-  name: string;
-  email: string;
-  password: string;
-  id: string;
-}
-export interface ISignIn {
-  email: string;
-  password: string;
-  name: string;
-}
+import { AuthProps, ILogin, ISignIn } from "../models/AuthInterfaces";
 
-interface AuthProps {
-  users: IUser[];
-  user: IUser;
-  isAuthenticated: boolean;
-}
-
-interface ILogin {
-  email: string;
-  password: string;
-}
 const initialState: AuthProps = {
   isAuthenticated: Boolean(localStorage.getItem("isAuthenticated")),
   users: [
     {
-      email: "",
-      password: "",
-      name: "",
-      id: "",
+      email: "test@test.com",
+      password: "password",
+      name: "Gustavo",
+      id: "p1",
     },
   ],
   user: {

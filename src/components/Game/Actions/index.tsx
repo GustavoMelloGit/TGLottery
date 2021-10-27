@@ -27,7 +27,6 @@ export default function ActionList({ gameSelected }: IActionList): JSX.Element {
     dispatch(cleanNumbersArray());
   }
   function handleCompleteGame() {
-    dispatch(cleanNumbersArray());
     dispatch(
       completeGame({
         max: gameResponse.max_number,
