@@ -15,7 +15,7 @@ import {
 } from "../../../pages/Authentication/styles";
 
 //Components
-import { ArrowedButton, Toast } from "../..";
+import { ArrowedButton, Toast } from "../../";
 
 const LogIn: React.FC<FormProps> = (props) => {
   const dispatch = useDispatch();
@@ -54,24 +54,40 @@ const LogIn: React.FC<FormProps> = (props) => {
         <h1>Authentication</h1>
         <FormWrapper>
           <form onSubmit={handleLoginSubmit}>
-            <Input type="email" placeholder="Email" ref={emailRef} required />
+            <Input
+              type="email"
+              placeholder="Email"
+              ref={emailRef}
+              required
+              data-cy="email-input"
+              autoFocus
+            />
             <Input
               type="password"
               placeholder="Password"
               ref={passwordRef}
               required
+              data-cy="password-input"
             />
           </form>
-          <ForgotPassword onClick={handleForgotPassword}>
+          <ForgotPassword
+            onClick={handleForgotPassword}
+            data-cy="forgot-password"
+          >
             I forgot my password
           </ForgotPassword>
           <ArrowedButton
             onClick={handleLoginSubmit}
             text="Log In"
             color="#B5C401"
+            data-cy="login-button"
           />
         </FormWrapper>
-        <ArrowedButton text="Sign Up" onClick={handleSignIn} />
+        <ArrowedButton
+          text="Sign Up"
+          onClick={handleSignIn}
+          data-cy="signup-button"
+        />
       </AuthenticationWrapper>
       <Toast />
     </>

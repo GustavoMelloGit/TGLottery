@@ -18,7 +18,12 @@ export default function NumberButton(props: INumberButton): JSX.Element {
     selected = true;
   }
   return (
-    <Number selected={selected} gameColor={props.color} {...props}>
+    <Number
+      selected={selected}
+      gameColor={props.color}
+      data-cy={`numbers-button(${+props.index})`}
+      {...props}
+    >
       {props.index}
     </Number>
   );

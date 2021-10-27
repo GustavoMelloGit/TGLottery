@@ -54,6 +54,7 @@ export default function ActionList({ gameSelected }: IActionList): JSX.Element {
           text="Complete game"
           gameColor={gameResponse.color}
           onClick={handleCompleteGame}
+          data-cy="completeGame-button"
         />
       </li>
       <li>
@@ -61,6 +62,7 @@ export default function ActionList({ gameSelected }: IActionList): JSX.Element {
           text="Clear game"
           gameColor={gameResponse.color}
           onClick={handleClearGame}
+          data-cy="clearGame-button"
         />
       </li>
       <li>
@@ -69,6 +71,7 @@ export default function ActionList({ gameSelected }: IActionList): JSX.Element {
           Image={AiOutlineShoppingCart}
           gameColor={gameResponse.color}
           onClick={handleAddToCart}
+          data-cy="addToCart-button"
           filled
         />
       </li>

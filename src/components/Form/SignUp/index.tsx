@@ -13,7 +13,7 @@ import {
 import toast from "react-hot-toast";
 
 //Components
-import { ArrowedButton, Toast } from "../..";
+import { ArrowedButton, Toast } from "../../";
 import { ISignIn } from "../../../models/AuthInterfaces";
 
 const SignUp: React.FC<FormProps> = (props) => {
@@ -51,25 +51,40 @@ const SignUp: React.FC<FormProps> = (props) => {
       <AuthenticationWrapper>
         <h1>Registration</h1>
         <FormWrapper>
-          <Input type="text" placeholder="Name" required ref={nameInput} />
-          <Input type="email" placeholder="Email" required ref={emailInput} />
+          <Input
+            type="text"
+            placeholder="Name"
+            required
+            ref={nameInput}
+            data-cy="name-input"
+          />
+          <Input
+            type="email"
+            placeholder="Email"
+            required
+            ref={emailInput}
+            data-cy="email-input"
+          />
           <Input
             type="password"
             placeholder="Password"
             required
             ref={passwordInput}
+            data-cy="password-input"
           />
           <ArrowedButton
             text="Register"
             color="#B5C401"
             style={{ marginTop: 20 }}
             onClick={handleSignIn}
+            data-cy="register-button"
           />
         </FormWrapper>
         <ArrowedButton
           text="Back"
           arrowToRight={false}
           onClick={handleGoBack}
+          data-cy="goBack-button"
         />
       </AuthenticationWrapper>
       <Toast />
