@@ -40,7 +40,10 @@ const gamesSlice = createSlice({
       function selectRandomNumbers() {
         if (state.game.numbers.length < data.max) {
           const random = randomNumber(1, data.range);
-          state.game.numbers.push(random);
+          if (!state.game.numbers.includes(random)) {
+            state.game.numbers.push(random);
+          }
+
           selectRandomNumbers();
         } else return;
       }
