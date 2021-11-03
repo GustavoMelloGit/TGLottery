@@ -17,6 +17,7 @@
 import "./commands";
 before(() => {
   cy.visit("localhost:3000/");
+  cy.RandomNumbers(1, 6);
 });
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

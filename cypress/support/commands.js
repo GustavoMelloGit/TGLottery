@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import { signIn, logIn } from "../../src/store/auth";
-import { completeGame, addToCart, saveGames } from "../../src/store/games";
+import { completeGame, addToCart } from "../../src/store/games";
 import api from "../../src/api/api.json";
 
 Cypress.Commands.add("RandomNumbers", (min, max) => {
@@ -67,7 +67,6 @@ Cypress.Commands.add("LogIn", () => {
     password: "password",
   };
 
-  cy.SignIn();
   dispatch(logIn(user));
 });
 
