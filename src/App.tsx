@@ -1,5 +1,7 @@
 import GlobalStyle from "./styles/globalStyles";
 import Routes from "./routes";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 function App() {
   return (

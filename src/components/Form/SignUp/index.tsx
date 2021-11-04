@@ -1,9 +1,8 @@
 //Utils
 import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
-import { signIn } from "@store/index";
 import FormProps from "../../../models/FormProps";
-import { ISignIn } from "../../../models/AuthInterfaces";
+import api from "@api/api";
+import endpointsConfig from "@api/endpoints.config";
 
 //Styling
 import {
@@ -20,31 +19,36 @@ const SignUp: React.FC<FormProps> = (props) => {
   const nameInput = useRef<HTMLInputElement>(null);
   const emailInput = useRef<HTMLInputElement>(null);
   const passwordInput = useRef<HTMLInputElement>(null);
-  const dispatch = useDispatch();
 
   function handleGoBack() {
     props.setForm(0);
   }
-  function handleSignIn() {
+  async function handleSignIn() {
     //Getting input values
     const enteredName = nameInput.current!.value;
     const enteredEmail = emailInput.current!.value;
     const enteredPassword = passwordInput.current!.value;
 
     //SignIn
-    const user: ISignIn = {
-      email: enteredEmail,
-      name: enteredName,
-      password: enteredPassword,
-    };
     try {
-      dispatch(signIn(user));
+      api
+        .post(
+          `${endpointsConfig.REACT_APP_API_URL}signUp?key=${endpointsConfig.REACT_APP_API_KEY}`,
+          {
+            email: enteredEmail,
+            password: enteredPassword,
+          }
+        )
+        .then((response) => {
+          if (response.status === 200) {
+            toast.success("Cadastrado com sucesso!");
+            props.setForm(0);
+          }
+        });
     } catch (e: any) {
       toast.error(e.message);
       return;
     }
-    toast.success("Cadastrado com sucesso!");
-    props.setForm(0);
   }
   return (
     <>
