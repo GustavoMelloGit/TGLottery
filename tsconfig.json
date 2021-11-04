@@ -11,6 +11,7 @@
       "@components/*":["./src/components/*"],
       "@store/*" : ["./src/store/*"],
       "@api/*": ["./src/api/*"],
+      "@utils/*": ["./src/utils/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,

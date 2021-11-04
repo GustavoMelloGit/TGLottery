@@ -7,7 +7,6 @@ export interface ISignIn {
 }
 
 export interface AuthProps {
-  users: IUser[];
   user: IUser;
   isAuthenticated: boolean;
 }
@@ -15,4 +14,5 @@ export interface AuthProps {
 export interface ILogin {
   email: string;
   password: string;
+  idToken: string;
 }

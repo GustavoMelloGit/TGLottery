@@ -10,7 +10,7 @@ import {
   saveGames,
   clearCartGames,
 } from "./games";
-import { logIn, logOut, signIn } from "./auth";
+import { logIn, logOut } from "./auth";
 
 const store = configureStore({
   reducer: {
@@ -22,7 +22,6 @@ const store = configureStore({
 export {
   logIn,
   logOut,
-  signIn,
   addNumberSelected,
   cleanNumbersArray,
   completeGame,

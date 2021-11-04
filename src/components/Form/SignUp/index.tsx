@@ -13,7 +13,8 @@ import {
 import toast from "react-hot-toast";
 
 //Components
-import { ArrowedButton, Toast } from "../../";
+import { ArrowedButton } from "../../";
+import { authenticationIsValid } from "@utils/validation";
 
 const SignUp: React.FC<FormProps> = (props) => {
   const nameInput = useRef<HTMLInputElement>(null);
@@ -24,12 +25,17 @@ const SignUp: React.FC<FormProps> = (props) => {
     props.setForm(0);
   }
   async function handleSignIn() {
-    const loading = toast.loading("Processando");
+    const loading = toast.loading("Carregando...");
     //Getting input values
     const enteredName = nameInput.current!.value;
     const enteredEmail = emailInput.current!.value;
     const enteredPassword = passwordInput.current!.value;
 
+    if (!authenticationIsValid(enteredEmail, enteredPassword)) {
+      toast.dismiss(loading);
+      toast.error("Preencha os campos corretamente");
+      return;
+    }
     //SignIn
     api
       .post(
@@ -52,10 +58,10 @@ const SignUp: React.FC<FormProps> = (props) => {
       });
   }
   return (
-    <>
-      <AuthenticationWrapper>
-        <h1>Registration</h1>
-        <FormWrapper>
+    <AuthenticationWrapper>
+      <h1>Registration</h1>
+      <FormWrapper>
+        <form onSubmit={handleSignIn}>
           <Input
             type="text"
             placeholder="Name"
@@ -77,23 +83,23 @@ const SignUp: React.FC<FormProps> = (props) => {
             ref={passwordInput}
             data-cy="password-input"
           />
-          <ArrowedButton
-            text="Register"
-            color="#B5C401"
-            style={{ marginTop: 20 }}
-            onClick={handleSignIn}
-            data-cy="register-button"
-          />
-        </FormWrapper>
+        </form>
         <ArrowedButton
-          text="Back"
-          arrowToRight={false}
-          onClick={handleGoBack}
-          data-cy="goBack-button"
+          text="Register"
+          type="submit"
+          color="#B5C401"
+          style={{ marginTop: 20 }}
+          onClick={handleSignIn}
+          data-cy="register-button"
         />
-      </AuthenticationWrapper>
-      <Toast />
-    </>
+      </FormWrapper>
+      <ArrowedButton
+        text="Back"
+        arrowToRight={false}
+        onClick={handleGoBack}
+        data-cy="goBack-button"
+      />
+    </AuthenticationWrapper>
   );
 };
 
