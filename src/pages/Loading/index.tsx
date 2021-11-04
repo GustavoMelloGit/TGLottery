@@ -1,6 +1,6 @@
 import { LoadingContainer } from "./styles";
 
-export function Loading(): JSX.Element {
+export default function Loading(): JSX.Element {
   return (
     <LoadingContainer>
       <div className="loader"></div>

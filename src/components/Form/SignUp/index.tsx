@@ -24,31 +24,32 @@ const SignUp: React.FC<FormProps> = (props) => {
     props.setForm(0);
   }
   async function handleSignIn() {
+    const loading = toast.loading("Processando");
     //Getting input values
     const enteredName = nameInput.current!.value;
     const enteredEmail = emailInput.current!.value;
     const enteredPassword = passwordInput.current!.value;
 
     //SignIn
-    try {
-      api
-        .post(
-          `${endpointsConfig.REACT_APP_API_URL}signUp?key=${endpointsConfig.REACT_APP_API_KEY}`,
-          {
-            email: enteredEmail,
-            password: enteredPassword,
-          }
-        )
-        .then((response) => {
-          if (response.status === 200) {
-            toast.success("Cadastrado com sucesso!");
-            props.setForm(0);
-          }
-        });
-    } catch (e: any) {
-      toast.error(e.message);
-      return;
-    }
+    api
+      .post(
+        `${endpointsConfig.REACT_APP_API_URL}signUp?key=${endpointsConfig.REACT_APP_API_KEY}`,
+        {
+          email: enteredEmail,
+          password: enteredPassword,
+        }
+      )
+      .then((response) => {
+        toast.dismiss(loading);
+        if (response.status === 200) {
+          toast.success("Cadastrado com sucesso!");
+          props.setForm(0);
+        }
+      })
+      .catch((error) => {
+        toast.error("Erro ao cadastrar!");
+        toast.dismiss(loading);
+      });
   }
   return (
     <>
