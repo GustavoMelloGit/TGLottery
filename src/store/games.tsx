@@ -32,6 +32,9 @@ const gamesSlice = createSlice({
     },
     completeGame(state, action) {
       const data: { max: number; range: number; type: string } = action.payload;
+      if (state.game.numbers.length === data.max) {
+        state.game.numbers = [];
+      }
       selectRandomNumbers();
       function randomNumber(min: number, max: number) {
         return Math.floor(Math.random() * (max - min) + min);
@@ -43,7 +46,6 @@ const gamesSlice = createSlice({
           if (!state.game.numbers.includes(random)) {
             state.game.numbers.push(random);
           }
-
           selectRandomNumbers();
         } else return;
       }
