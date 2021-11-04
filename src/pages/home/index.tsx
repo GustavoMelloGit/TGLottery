@@ -1,10 +1,11 @@
 //Utils
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addNumberSelected } from "../../store/games";
-import toast from "react-hot-toast";
+import { addNumberSelected } from "@store/index";
+import api from "@api/api.json";
 
 //Styles
+import toast from "react-hot-toast";
 import {
   Container,
   Content,
@@ -12,7 +13,6 @@ import {
   GameWrapper,
   NumbersWrapper,
 } from "./styles";
-import api from "../../api/api.json";
 
 //Components
 import {

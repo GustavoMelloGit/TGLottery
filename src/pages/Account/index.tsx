@@ -1,9 +1,9 @@
 //Utils
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 import { useHistory } from "react-router";
-import api from "../../api/api.json";
+import { RootState } from "@store/index";
+import api from "@api/api.json";
 import { GameProps } from "../../models/GamesInterfaces";
 
 //Styling

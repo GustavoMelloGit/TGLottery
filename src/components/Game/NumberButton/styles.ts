@@ -11,7 +11,7 @@ export const Number = styled.button<Props>`
   height: 5.5rem;
   width: 5.5rem;
   border-radius: 50%;
-  background: ${(p) => (p.selected ? p.gameColor : "#adc0c4")} 0% 0% no-repeat
+  background: ${(p) => (p.selected ? p.gameColor : "#758285")} 0% 0% no-repeat
     padding-box;
   opacity: 1;
   color: #fff;

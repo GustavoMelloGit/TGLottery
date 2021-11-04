@@ -1,7 +1,7 @@
 //Utils
 import { FormEvent, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { logIn } from "../../../store/auth";
+import { logIn } from "@store/index";
 import { useHistory } from "react-router-dom";
 import FormProps from "../../../models/FormProps";
 import toast from "react-hot-toast";
