@@ -12,7 +12,6 @@ import { Centered } from "../../styles/globalStyles";
 import { CartList } from "./sub_components";
 import { ArrowedButton, Card } from "..";
 import { useHistory } from "react-router";
-import { Toast } from "..";
 
 export default function Cart(): JSX.Element {
   const gamesCtx = useSelector((state: RootState) => state.games);
@@ -58,7 +57,6 @@ export default function Cart(): JSX.Element {
       <SaveWrapper onClick={handleSaveCart}>
         <ArrowedButton text="Save" color="#27C383" data-cy="saveCart-button" />
       </SaveWrapper>
-      <Toast />
     </Card>
   );
 }
