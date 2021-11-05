@@ -27,7 +27,7 @@ const SignUp: React.FC<FormProps> = (props) => {
   async function handleSignIn() {
     const loading = toast.loading("Carregando...");
     //Getting input values
-    const enteredName = nameInput.current!.value;
+    //const enteredName = nameInput.current!.value;
     const enteredEmail = emailInput.current!.value;
     const enteredPassword = passwordInput.current!.value;
 
