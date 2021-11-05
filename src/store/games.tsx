@@ -71,7 +71,7 @@ const gamesSlice = createSlice({
       state.totalPrice -= data.price;
     },
     saveGames(state) {
-      if (state.totalPrice > 30) {
+      if (state.totalPrice >= 30) {
         state.cartGames.forEach((game) => state.savedGames.push(game));
       } else {
         throw new Error("O carrinho precisa ter no mínimo R$30,00");
