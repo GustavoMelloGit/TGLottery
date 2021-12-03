@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IGames, INumberProps } from "../models/GamesInterfaces";
+import api from "@api/api.json";
+
 const initialState: IGames = {
   game: {
     id: -1,
@@ -71,7 +73,7 @@ const gamesSlice = createSlice({
       state.totalPrice -= data.price;
     },
     saveGames(state) {
-      if (state.totalPrice >= 30) {
+      if (state.totalPrice >= api["min-cart-value"]) {
         state.cartGames.forEach((game) => state.savedGames.push(game));
       } else {
         throw new Error("O carrinho precisa ter no mínimo R$30,00");

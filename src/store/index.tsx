@@ -13,6 +13,7 @@ import {
 import { logIn, logOut } from "./auth";
 
 const store = configureStore({
+  middleware: [],
   reducer: {
     auth: authSlice,
     games: gamesSlice,

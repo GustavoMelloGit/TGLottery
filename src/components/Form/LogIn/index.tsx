@@ -60,7 +60,14 @@ const LogIn: React.FC<FormProps> = (props) => {
       .then((response) => {
         toast.dismiss(loading);
         if (response.status === 200) {
-          dispatch(logIn(response.data));
+          const data = response.data;
+          const expiresIn = 3600;
+
+          const expirationTime = new Date(
+            new Date().getTime() + expiresIn * 1000
+          );
+
+          dispatch(logIn({ data, expirationTime }));
           history.push("/home");
         }
       })
